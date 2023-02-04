@@ -153,7 +153,7 @@ public class donorRegister extends JFrame implements ActionListener {
                 String lname = lastname.getText();
                 String uname = username.getText();
                 String mail = email.getText();
-                char pass[] = passwordField.getPassword();
+                String pass = passwordField.getText();
                 String mobile = mob.getText();
                 try {
                     if (fname.equals("")) {
@@ -166,6 +166,11 @@ public class donorRegister extends JFrame implements ActionListener {
                 } catch (Exception ae) {
                     System.out.println(ae);
                 }
+            }
+
+            else if (e.getSource()== btnNewButton1){
+                setVisible(false);
+                new start().setVisible(true);
             }
         }
     public static void main(String[] args) {

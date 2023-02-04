@@ -47,6 +47,7 @@ public class blood_search extends JFrame {
     }
 
     public blood_search() {
+
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(300, 90, 1014, 597);
         setResizable(false);
