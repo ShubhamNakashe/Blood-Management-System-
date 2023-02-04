@@ -9,54 +9,45 @@ import java.sql.*;
 
 public class info implements ActionListener {
 
-    JFrame frame1;//creating object of first JFrame
+    JFrame frame1;
 
 
-    JButton fetchButton;//creating object of JButton
+    JButton fetchButton;
 
 
-    JFrame frame2;//creating object of second JFrame
-    DefaultTableModel defaultTableModel;//creating object of DefaultTableModel
-    JTable table;//Creating object of JTable
-    Connection connection;//Creating object of Connection class
-    Statement statement;//Creating object of Statement clas
+    JFrame frame2;
+    DefaultTableModel defaultTableModel;
+    JTable table;
+    Connection connection;
+    Statement statement;
 
 
     info() {
 
         frame1 = new JFrame();
-        frame1.setTitle("Search Database");//setting the title of first JFrame
-        frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//setting default close operation
-        GridBagLayout bagLayout = new GridBagLayout();//creating object of GridBagLayout
-        GridBagConstraints bagConstraints = new GridBagConstraints();//creating object of GridBagConstratints
+        frame1.setTitle("Search Database");
+        frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        GridBagLayout bagLayout = new GridBagLayout();
+        GridBagConstraints bagConstraints = new GridBagConstraints();
 
-        frame1.setLayout(bagLayout);//setting the layout to GridBagLayout of first JFrame
+        frame1.setLayout(bagLayout);
         frame1.setBounds(300, 90, 1014, 597);
 
-        bagConstraints.insets = new Insets(15, 40, 0, 0);//Setting the padding between the components and neighboring components
-
-        //Setting the property of JLabel and adding it to the first JFrame
+        bagConstraints.insets = new Insets(15, 40, 0, 0);
 
 
-        //Setting the property of JTextfield and adding it to the first JFrame
-
-
-        //Setting the property of JButton(Fetch Data) and adding it to the first JFrame
         fetchButton = new JButton("Fetch Data");
         bagConstraints.gridx = 0;
         bagConstraints.gridy = 1;
         bagConstraints.ipadx = 60;
         frame1.add(fetchButton, bagConstraints);
 
-        //Setting the property of JButton(Reset Data) and adding it to the second JFrame
 
-
-        //adding ActionListener to both buttons
         fetchButton.addActionListener(this);
 
 
-        frame1.setVisible(true);//Setting the visibility of First JFrame
-        frame1.validate();//Performing relayout of the First JFrame
+        frame1.setVisible(true);
+        frame1.validate();
 
 
     }
@@ -71,7 +62,7 @@ public class info implements ActionListener {
         if (e.getSource() == fetchButton) {
 
 
-            frameSecond();//passing the text value to frameSecond method
+            frameSecond();
 
         }
 
@@ -81,13 +72,13 @@ public class info implements ActionListener {
 
     public void frameSecond() {
 
-        //setting the properties of second JFrame
+
         frame2 = new JFrame("Database Results");
         frame2.setLayout(new FlowLayout());
 
         frame2.setBounds(300, 90, 1014, 597);
 
-        //Setting the properties of JTable and DefaultTableModel
+
         defaultTableModel = new DefaultTableModel();
         table = new JTable(defaultTableModel);
         table.setPreferredScrollableViewportSize(new Dimension(300, 100));
@@ -97,37 +88,29 @@ public class info implements ActionListener {
         defaultTableModel.addColumn("password");
 
 
-
-
-
         try {
 
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bbms", "root", "shashank");//Crating connection with database
-            statement = connection.createStatement();//crating statement object
-            String query = "select * from bbms.donordata";//Storing MySQL query in A string variable
-            ResultSet resultSet = statement.executeQuery(query);//executing query and storing result in ResultSet
+            statement = connection.createStatement();
+            String query = "select * from bbms.donordata";
+            ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
 
-                //Retrieving details from the database and storing it in the String variables
+
                 String userName = resultSet.getString("userName");
 
                 String password = resultSet.getString("password");
 
-                defaultTableModel.addRow(new Object[]{userName,password});//Adding row in Table
-                defaultTableModel.addRow(new Object[]{userName,password});//Adding row in Table
+                defaultTableModel.addRow(new Object[]{userName, password});
+                defaultTableModel.addRow(new Object[]{userName, password});
 
-                frame2.setVisible(true);//Setting the visibility of second Frame
+                frame2.setVisible(true);
 
                 break;
 
 
             }
             frame2.setVisible(true);
-
-
-
-
-
 
 
         } catch (SQLException throwables) {

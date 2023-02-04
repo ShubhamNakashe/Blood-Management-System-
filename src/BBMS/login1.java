@@ -32,9 +32,7 @@ public class login1 extends JFrame implements ActionListener {
     JButton btnNewButton1;
 
 
-    /**
-     * Launch the application.
-     */
+
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -48,9 +46,7 @@ public class login1 extends JFrame implements ActionListener {
         });
     }
 
-    /**
-     * Create the frame.
-     */
+
     public login1() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(300, 90, 1014, 597);
@@ -120,20 +116,6 @@ public class login1 extends JFrame implements ActionListener {
                     } else {
                         JOptionPane.showMessageDialog(null, "Enter Valid Username or Password");
                     }
-//                System.out.println(rs);
-//                    String query1 = "select password from register";
-//                    c.s.executeUpdate(query1);
-//
-//                    if(textField.getText().equals(query) && passwordField.getText().equals(query1))
-//                    {
-//                        setVisible(false);
-//                        new patientpg().setVisible(true);
-//                    }
-//                    else
-//                    {
-//                        JOptionPane.showMessageDialog(null,"Enter Valid Username or Password");
-//
-//                    }
 
 
                 } catch (Exception ae) {

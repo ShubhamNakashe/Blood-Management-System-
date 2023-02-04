@@ -9,20 +9,16 @@ import java.sql.Statement;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTable;
-/**
- *
- * @author Dinesh Krishnan
- *
- */
+
 public class trial {
     private boolean status;
 
     public trial(String title) {
-// Creating Window using JFramez
+
         JFrame frame = new JFrame();
         frame.setTitle(title);
         frame.setSize(800, 500);
-// Adding Table View
+
         frame.add(getTablePanel());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
@@ -31,11 +27,10 @@ public class trial {
     private JPanel getTablePanel() {
         JPanel tableJPanel = new JPanel();
         tableJPanel.setLayout(new BorderLayout());
-// Column Header
+
         String[] columns = {"no", "type", "quantity"};
-// Getting Data for Table from Database
         Object[][] data = gettrial();
-// Creating JTable object passing data and header
+
         JTable donortable = new JTable(data, columns);
         tableJPanel.add(donortable.getTableHeader(), BorderLayout.NORTH);
         tableJPanel.add(donortable, BorderLayout.CENTER);
@@ -50,16 +45,16 @@ public class trial {
         final String PASSWORD = "shashank";
         final String QUERY = "SELECT no, type, quantity FROM  available_blood;";
         try {
-// Loading the Driver
+
             Class.forName(DRIVER_NAME);
-// Getting Database Connection Object by Passing URL, Username and Password
+
             Connection connection = DriverManager.getConnection(CONNECTION_URL, USERNAME, PASSWORD);
             Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = statement.executeQuery(QUERY);
-            int rowCount = getRowCount(rs); // Row Count
-            int columnCount = getColumnCount(rs); // Column Count
+            int rowCount = getRowCount(rs);
+            int columnCount = getColumnCount(rs);
             data = new Object[rowCount][columnCount];
-// Starting from First Row for Iteration
+
             rs.beforeFirst();
             int i = 0;
             while (rs.next()) {
@@ -84,7 +79,6 @@ public class trial {
         return data;
     }
 
-    // Method to get Row Count from ResultSet Object
     private int getRowCount(ResultSet rs) {
         try {
             if (rs != null) {
@@ -98,7 +92,6 @@ public class trial {
         return 0;
     }
 
-    // Method to get Column Count from ResultSet Object
     private int getColumnCount(ResultSet rs) {
         try {
             if (rs != null)
