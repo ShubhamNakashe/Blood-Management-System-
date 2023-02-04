@@ -9,19 +9,14 @@ import java.sql.Statement;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTable;
-/**
- *
- * @author Dinesh Krishnan
- *
- */
+
 public class donorinfo {
     private boolean status;
     public donorinfo(String title) {
-// Creating Window using JFramez
         JFrame frame = new JFrame();
         frame.setTitle(title);
         frame.setSize(800, 500);
-// Adding Table View
+
         frame.add(getTablePanel());
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
@@ -29,11 +24,8 @@ public class donorinfo {
     private JPanel getTablePanel() {
         JPanel tableJPanel = new JPanel();
         tableJPanel.setLayout(new BorderLayout());
-// Column Header
         String[] columns = {"donor_id", "donor_name", "donor_age", "blood_group", "any_disease", "phone_no"};
-// Getting Data for Table from Database
         Object[][] data = getdonorinfo();
-// Creating JTable object passing data and header
         JTable donortable = new JTable(data, columns);
         tableJPanel.add(donortable.getTableHeader(), BorderLayout.NORTH);
         tableJPanel.add(donortable, BorderLayout.CENTER);
@@ -47,16 +39,15 @@ public class donorinfo {
         final String PASSWORD = "shashank";
         final String QUERY = "SELECT donor_id, donor_name, donor_age, blood_group, any_disease, phone_no FROM bbms.donor_reg;";
         try {
-// Loading the Driver
             Class.forName(DRIVER_NAME);
-// Getting Database Connection Object by Passing URL, Username and Password
             Connection connection = DriverManager.getConnection(CONNECTION_URL, USERNAME, PASSWORD);
             Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
             ResultSet rs = statement.executeQuery(QUERY);
             int rowCount = getRowCount(rs); // Row Count
             int columnCount = getColumnCount(rs); // Column Count
             data = new Object[rowCount][columnCount];
-// Starting from First Row for Iteration
+
+
             rs.beforeFirst();
             int i = 0;
             while (rs.next()) {
@@ -78,7 +69,7 @@ public class donorinfo {
                 i++;
             }
             status = true;
-// Closing the Resources;
+
             statement.close();
             connection.close();
         } catch (Exception e) {
@@ -86,7 +77,7 @@ public class donorinfo {
         }
         return data;
     }
-    // Method to get Row Count from ResultSet Object
+
     private int getRowCount(ResultSet rs) {
         try {
             if(rs != null) {
@@ -99,7 +90,7 @@ public class donorinfo {
         }
         return 0;
     }
-    // Method to get Column Count from ResultSet Object
+
     private int getColumnCount(ResultSet rs) {
         try {
             if(rs != null)

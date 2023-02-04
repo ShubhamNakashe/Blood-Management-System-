@@ -18,11 +18,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-/**
- * User Registration using Swing
- * @author javaguides.net
- *
- */
+
 public class Donationform extends JFrame implements ActionListener {
     public static final long serialVersionUID = 1L;
     public final JTextField donorname;
@@ -38,9 +34,7 @@ public class Donationform extends JFrame implements ActionListener {
 
     public JPasswordField password;
 
-    /**
-     * Launch the application.
-     */
+
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -54,9 +48,7 @@ public class Donationform extends JFrame implements ActionListener {
         });
     }
 
-    /**
-     * Create the frame.
-     */
+
 
     public Donationform() {
         setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\User\\Desktop\\STDM.jpg"));

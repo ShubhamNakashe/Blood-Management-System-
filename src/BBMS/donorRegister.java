@@ -18,11 +18,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-/**
- * User Registration using Swing
- * @author javaguides.net
- *
- */
+
 public class donorRegister extends JFrame implements ActionListener {
     public static final long serialVersionUID = 1L;
     public JPanel contentPane;
@@ -36,17 +32,8 @@ public class donorRegister extends JFrame implements ActionListener {
     JLabel lblNewUserRegister, lblName, lblNewLabel, lblEmailAddress, lblUsername, lblPassword, lblMobileNumber;
 
 
-    /**
-     * Launch the application.
-     */
-
-
-    /**
-     * Create the frame.
-     */
 
    donorRegister() {
-        // setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\User\\Desktop\\STDM.jpg"));
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(450, 190, 1014, 597);
         setResizable(false);

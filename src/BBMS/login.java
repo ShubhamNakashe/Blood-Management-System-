@@ -28,9 +28,7 @@ public class login extends JFrame implements ActionListener {
     public JLabel label;
     public JPanel contentPane;
 
-    /**
-     * Launch the application.
-     */
+
     public static void main(String[] args) {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -44,9 +42,7 @@ public class login extends JFrame implements ActionListener {
         });
     }
 
-    /**
-     * Create the frame.
-     */
+
     public login () {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(300, 90, 1014, 597);
