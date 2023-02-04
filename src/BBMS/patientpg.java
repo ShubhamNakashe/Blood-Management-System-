@@ -79,5 +79,8 @@ public class patientpg extends JFrame {
             }
         });
         contentPane.add(btnNewButton);
+        setLayout(null);
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
 }

@@ -111,5 +111,6 @@ public class bloodquantity {
 
         System.out.println(donor_reg);
         System.out.println(patient_reg);
+
     }
 }

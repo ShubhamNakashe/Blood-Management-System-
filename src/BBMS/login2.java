@@ -101,6 +101,10 @@ public class login2 extends JFrame implements ActionListener{
         label = new JLabel("");
         label.setBounds(0, 0, 1008, 562);
         contentPane.add(label);
+
+        setLayout(null);
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
     public void actionPerformed(ActionEvent e) {
 

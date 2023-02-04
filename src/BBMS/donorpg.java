@@ -80,5 +80,10 @@ public class donorpg extends JFrame {
             }
         });
         contentPane.add(btnNewButton1);
+        setLayout(null);
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
+
+
 }
