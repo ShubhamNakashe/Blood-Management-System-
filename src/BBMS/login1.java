@@ -103,6 +103,10 @@ public class login1 extends JFrame implements ActionListener {
         label = new JLabel("");
         label.setBounds(0, 0, 1008, 562);
         contentPane.add(label);
+
+        setLayout(null);
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -119,12 +123,13 @@ public class login1 extends JFrame implements ActionListener {
 
 
                 } catch (Exception ae) {
-                    System.out.println(e);
+                    System.out.println(ae);
                 }
-            } else if (e.getSource() == btnNewButton1) {
-                setVisible(false);
-                new start().setVisible(true);
             }
+            }
+        else if (e.getSource() == btnNewButton1) {
+            setVisible(false);
+            new start().setVisible(true);
         }
 
     }

@@ -95,6 +95,10 @@ public class start extends JFrame {
         l.setBounds(5,1,800,600);
         add(l);
 
+        setLayout(null);
+        setLocationRelativeTo(null);
+        setVisible(true);
+
 
      }
 }

@@ -49,6 +49,10 @@ public class info implements ActionListener {
         frame1.setVisible(true);
         frame1.validate();
 
+        frame1.setLayout(null);
+        frame1.setLocationRelativeTo(null);
+        frame1.setVisible(true);
+
 
     }
 

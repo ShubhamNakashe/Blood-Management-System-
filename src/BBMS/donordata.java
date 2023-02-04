@@ -61,7 +61,9 @@ public class donordata implements ActionListener {
 
         frame1.setVisible(true);
         frame1.validate();
-
+        frame1.setLayout(null);
+        frame1.setLocationRelativeTo(null);
+        setVisible(true);
     }
 
     public static void main(String[] args) {

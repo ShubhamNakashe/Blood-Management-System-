@@ -44,6 +44,10 @@ public class getblood extends JFrame implements ActionListener {
         btnNewButton.setBounds(300, 92, 362, 73);
         btnNewButton.setBackground(UIManager.getColor("Button.disabledForeground"));
         btnNewButton.addActionListener(this);
+
+        setLayout(null);
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
 
     public void actionPerformed(ActionEvent e) {

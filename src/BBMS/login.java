@@ -100,6 +100,10 @@ public class login extends JFrame implements ActionListener {
         label = new JLabel("");
         label.setBounds(0, 0, 1008, 562);
         contentPane.add(label);
+
+        setLayout(null);
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btnNewButton)

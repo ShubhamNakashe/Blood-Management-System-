@@ -166,7 +166,9 @@ public class Donationform extends JFrame implements ActionListener {
         btnNewButton1.addActionListener(this);
         contentPane.add(btnNewButton1);
 
-
+        setLayout(null);
+        setLocationRelativeTo(null);
+        setVisible(true);
         }
             public void actionPerformed(ActionEvent e) {
         if(e.getSource() == btnNewButton) {

@@ -79,6 +79,9 @@ public class donateblood extends JFrame {
         btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 22));
         btnNewButton.setBounds(400, 300, 228, 74);
         contentPane.add(btnNewButton);
+        setLayout(null);
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
 
 

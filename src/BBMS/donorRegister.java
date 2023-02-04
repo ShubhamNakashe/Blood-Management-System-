@@ -131,6 +131,10 @@ public class donorRegister extends JFrame implements ActionListener {
         btnNewButton1.setBounds(245, 456, 259, 74);
         btnNewButton1.addActionListener(this);
         contentPane.add(btnNewButton1);
+
+       setLayout(null);
+       setLocationRelativeTo(null);
+       setVisible(true);
     }
 
         public void actionPerformed (ActionEvent e)
