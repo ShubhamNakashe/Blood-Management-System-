@@ -19,14 +19,14 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-public class login extends JFrame {
+public class login extends JFrame implements ActionListener {
 
-    private static final long serialVersionUID = 1L;
-    private JTextField textField;
-    private JPasswordField passwordField;
-    private JButton btnNewButton;
-    private JLabel label;
-    private JPanel contentPane;
+    public static final long serialVersionUID = 1L;
+    public JTextField textField;
+    public JPasswordField passwordField;
+    public JButton btnNewButton,btnNewButton1;
+    public JLabel label;
+    public JPanel contentPane;
 
     /**
      * Launch the application.
@@ -47,7 +47,7 @@ public class login extends JFrame {
     /**
      * Create the frame.
      */
-    public login() {
+    public login () {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setBounds(300, 90, 1014, 597);
         setResizable(false);
@@ -88,58 +88,41 @@ public class login extends JFrame {
         contentPane.add(lblPassword);
 
 
-
         btnNewButton = new JButton("Login");
         btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 26));
         btnNewButton.setBounds(545, 356, 162, 73);
-        btnNewButton.addActionListener(new ActionListener() {
-
-            public void actionPerformed(ActionEvent e) {
-                String userName = textField.getText();
-                String password = passwordField.getText();
-                try {
-                    Connection connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/bbms",
-                            "root", "shashank");
-
-                    PreparedStatement st = (PreparedStatement) connection
-                            .prepareStatement("Select user_name, pass_word from donor_reg where user_name=? and pass_word=?");
-
-
-                      st.setString(1, userName);
-                    st.setString(2, password);
-                   ResultSet rs = st.executeQuery();
-                  if (rs.next()) {
-                        dispose();
-                      donorpg ah = new donorpg();
-                     ah.setTitle("Welcome");
-                       ah.setVisible(true);
-                        JOptionPane.showMessageDialog(btnNewButton, "You have successfully logged in");
-                    } else {
-                        JOptionPane.showMessageDialog(btnNewButton, "Wrong Username & Password");
-                    }
-                } catch (SQLException sqlException) {
-                  sqlException.printStackTrace();
-                }
-            }
-        });
-
+        btnNewButton.addActionListener(this);
         contentPane.add(btnNewButton);
-       JButton btnNewButton1 = new JButton("Back");
+        btnNewButton1 = new JButton("Back");
         btnNewButton1.setFont(new Font("Tahoma", Font.PLAIN, 26));
         btnNewButton1.setBounds(245, 356, 162, 73);
-        btnNewButton1.addActionListener(new ActionListener() {
+        btnNewButton1.addActionListener(this);
 
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-                start ah = new start();
-                ah.setTitle("start");
-                ah.setVisible(true);
-            }
-        });
+
         contentPane.add(btnNewButton1);
 
         label = new JLabel("");
         label.setBounds(0, 0, 1008, 562);
         contentPane.add(label);
+    }
+    public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == btnNewButton)
+            {
+                try {
+                    if ((textField.getText().equals("donor1")  && passwordField.getText().equals("11111")) || (textField.getText().equals("donor2")  && passwordField.getText().equals("22222")) || (textField.getText().equals("donor3")  && passwordField.getText().equals("donor")) || (textField.getText().equals("donor4")  && passwordField.getText().equals("44444")) ) {
+                        setVisible(false);
+                        new donorpg().setVisible(true);
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Enter Valid Username or Password");
+                    }
+                } catch (Exception ae) {
+                    System.out.println(e);
+                }
+
+            }
+         else if (e.getSource() == btnNewButton1) {
+            setVisible(false);
+            new start().setVisible(true);
+        }
     }
 }

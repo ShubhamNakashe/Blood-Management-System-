@@ -23,20 +23,20 @@ import javax.swing.border.EmptyBorder;
  * @author javaguides.net
  *
  */
-public class Donationform extends JFrame {
-    private static final long serialVersionUID = 1L;
-    private final JTextField donorname;
-    private JPanel contentPane;
-    private JTextField donorid;
+public class Donationform extends JFrame implements ActionListener {
+    public static final long serialVersionUID = 1L;
+    public final JTextField donorname;
+    public JPanel contentPane;
+    public JTextField donorid;
 
-    private JTextField donorage;
-    private JTextField bloodgroup;
-    private JTextField anydisease;
-    private JTextField no;
-    private JTextField username;
-    private JButton btnNewButton;
+    public JTextField donorage;
+    public JTextField bloodgroup;
+    public JTextField anydisease;
+    public JTextField no;
+    public JTextField username;
+    public JButton btnNewButton,btnNewButton1;
 
-    private JPasswordField password;
+    public JPasswordField password;
 
     /**
      * Launch the application.
@@ -144,12 +144,11 @@ public class Donationform extends JFrame {
         contentPane.add(anydisease);
         anydisease.setColumns(10);
 
-       no = new JTextField();
+        no = new JTextField();
         no.setFont(new Font("Tahoma", Font.PLAIN, 32));
         no.setBounds(707, 151, 228, 50);
         contentPane.add(no);
         no.setColumns(10);
-
 
 
         username = new JTextField();
@@ -164,59 +163,51 @@ public class Donationform extends JFrame {
         password.setColumns(10);
 
         btnNewButton = new JButton("Register");
-        btnNewButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                String  donor_id= donorid.getText();
-                String donor_name = donorname.getText();
-                String donor_age = donorage.getText();
-                String blood_group = bloodgroup.getText();
-                String any_disease = anydisease.getText();
-                String phone_no = no.getText();
-                int len = phone_no.length();
-                String user_name = username.getText();
-                String pass_word = password.getText();
-
-                String msg = "" + donor_id;
-                msg += " \n";
-                if (len != 10) {
-                    JOptionPane.showMessageDialog(btnNewButton, "Enter a valid mobile number");
-                }
-
-                try {
-                    Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bbms", "root", "shashank");
-
-                    String query = "INSERT INTO donor_reg values('" + donor_id + "','" + donor_name + "','" + donor_age  + "','" +
-                          blood_group + "','" + any_disease + "','" + phone_no + "','"+ user_name +"','" + pass_word +"')";
-
-                    Statement sta = connection.createStatement();
-                    int x = sta.executeUpdate(query);
-                    if (x == 0) {
-                        JOptionPane.showMessageDialog(btnNewButton, "This is alredy exist");
-                    } else {
-                        JOptionPane.showMessageDialog(btnNewButton,
-                                "Welcome, " + msg + "Your account is sucessfully created");
-                    }
-                    connection.close();
-                } catch (Exception exception) {
-                    exception.printStackTrace();
-                }
-            }
-        });
         btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 22));
         btnNewButton.setBounds(499, 456, 259, 74);
+        btnNewButton.addActionListener(this);
         contentPane.add(btnNewButton);
-        JButton btnNewButton1 = new JButton("Back");
+
+        btnNewButton1 = new JButton("Back");
         btnNewButton1.setFont(new Font("Tahoma", Font.PLAIN, 26));
         btnNewButton1.setBounds(245, 456, 259, 74);
-        btnNewButton1.addActionListener(new ActionListener() {
-
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-                start ah = new start();
-                ah.setTitle("start");
-                ah.setVisible(true);
-            }
-        });
+        btnNewButton1.addActionListener(this);
         contentPane.add(btnNewButton1);
-    }
+
+
+        }
+            public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == btnNewButton) {
+            String donor_id = donorid.getText();
+            String donor_age = donorage.getText();
+            String donor_name = donorname.getText();
+            String phone_no = no.getText();
+            String user_name = username.getText();
+            String blood_group = bloodgroup.getText();
+            String any_disease = anydisease.getText();
+            String pass_word = password.getText();
+
+            try {
+                if (donor_name.equals("")) {
+                    JOptionPane.showMessageDialog(null, "Donor Name is Required");
+                } else {
+                    conn c = new conn();
+                    String query = "insert into donor_register values('" + donor_id + "','" + donor_age + "','" + donor_name + "','" + phone_no + "','" + user_name + "','" + blood_group + "','" + any_disease + "','" + pass_word + "')";
+                    c.s.executeUpdate(query);
+                    JOptionPane.showMessageDialog(null,"You have registered Successfully");
+                    setVisible(false);
+                    new start().setVisible(true);
+                }
+            } catch (Exception ae) {
+                System.out.println(ae);
+            }
+
+        }
+        else if (e.getSource()==btnNewButton1) {
+
+            setVisible(false);
+            new start().setVisible(true);
+        }
+
+            }
 }
